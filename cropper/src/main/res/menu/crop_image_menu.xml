@@ -27,8 +27,9 @@
                 android:title="@string/ic_flip_24_vertically"/>
         </menu>
     </item>
-    <item
+     <item
         android:id="@+id/crop_image_menu_crop"
+        android:icon="@drawable/crop"
         android:title="@string/crop_image_menu_crop"
         app:showAsAction="always"/>
 
