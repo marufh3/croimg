@@ -29,8 +29,7 @@
     </item>
      <item
         android:id="@+id/crop_image_menu_crop"
-        android:icon="@drawable/crop"
-        android:title="@string/crop_image_menu_crop"
+        android:title="Apply"
         app:showAsAction="always"/>
 
 </menu>
