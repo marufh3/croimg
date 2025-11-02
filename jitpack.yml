@@ -1,0 +1,9 @@
+jdk:
+  - openjdk17
+
+before_install:
+  - echo "Using Java 17 for Gradle build"
+  - java -version
+
+install:
+  - ./gradlew clean build -x test --stacktrace
