@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'maven-publish'
 
-group = 'com.github.sabrinaaktar' // নিজের GitHub username
+group = 'com.github.marufh3' // নিজের GitHub username
 
 afterEvaluate {
     publishing {
@@ -13,7 +13,7 @@ afterEvaluate {
 
                 groupId = 'com.github.marufh3'
                 artifactId = 'croimg'
-                version = '5.3.4'
+                version = '5.3.6'
             }
         }
     }
@@ -26,7 +26,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName '5.3.3'
+        versionName '5.3.6'
     }
 
     compileOptions {

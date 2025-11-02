@@ -25,3 +25,9 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
+
+// ✅ Define compile & target SDK versions here
+ext {
+    compileSdkVersion = 33
+    targetSdkVersion = 33
+}
