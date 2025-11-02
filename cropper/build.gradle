@@ -3,73 +3,70 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'maven-publish'
 
-group = 'com.canhub.cropper'
+group = 'com.github.sabrinaaktar' // নিজের GitHub username
 
-// Because the components are created only during the afterEvaluate phase, you must
-// configure your publications using the afterEvaluate() lifecycle method.
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
-                // Applies the component for the release build variant.
                 from components.release
 
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.github.CanHub'
-                artifactId = 'Android-Image-Cropper'
-                version = rootProject.libVersion
+                groupId = 'com.github.marufh3'  // নিজের GitHub username
+                artifactId = 'croimg'             // নিজের repo নাম
+                version = '5.3.3'                     // নতুন tag version
             }
         }
     }
 }
 
 android {
-    compileSdk rootProject.compileSdkVersion
+    compileSdk 33
 
     defaultConfig {
-        minSdk rootProject.minSdkVersion
-        targetSdk rootProject.targetSdkVersion
+        minSdk 21
+        targetSdk 33
         versionCode 1
-        versionName rootProject.libVersion
+        versionName '5.3.3'
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    lintOptions {
-        abortOnError false
+
+    kotlinOptions {
+        jvmTarget = "11"
     }
+
     buildFeatures {
         viewBinding true
     }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+
+    lintOptions {
+        abortOnError false
     }
+
     testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
+        unitTests.includeAndroidResources = true
     }
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:$androidXAppCompatVersion"
+    // AndroidX dependencies
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "androidx.activity:activity-ktx:1.8.2"
+    implementation "androidx.exifinterface:exifinterface:1.3.9"
 
-    implementation "androidx.activity:activity-ktx:$androidXActivity"
+    // Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
-    implementation "androidx.exifinterface:exifinterface:$androidXExifVersion"
-    implementation "androidx.core:core-ktx:$androidXCoreKtxVersion"
-
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-
-    testImplementation "junit:junit:$junitVersion"
-    testImplementation "androidx.test.ext:junit:$androidXJunitVersion"
-    testImplementation "androidx.test:core:$androidXTestVersion"
-    testImplementation "androidx.test:runner:$androidXTestVersion"
-    testImplementation "io.mockk:mockk:$mockkVersion"
-
-    testImplementation "androidx.fragment:fragment-testing:$androidXFragmentTestingVersion"
-    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    // Test dependencies
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "androidx.test.ext:junit:1.1.6"
+    testImplementation "androidx.test:core:1.5.0"
+    testImplementation "androidx.fragment:fragment-testing:1.6.1"
+    testImplementation "io.mockk:mockk:1.13.7"
+    testImplementation "org.robolectric:robolectric:4.10"
 }

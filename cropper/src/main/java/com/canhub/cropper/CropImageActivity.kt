@@ -22,6 +22,9 @@ import com.canhub.cropper.CropImageView.OnSetImageUriCompleteListener
 import com.canhub.cropper.databinding.CropImageActivityBinding
 import com.canhub.cropper.utils.getUriForFile
 import java.io.File
+import androidx.core.view.WindowCompat
+import android.graphics.Color
+
 
 open class CropImageActivity :
     AppCompatActivity(),
