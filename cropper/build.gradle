@@ -58,18 +58,23 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:1.7.0"
-    implementation "androidx.core:core-ktx:1.12.0"
-    implementation "androidx.activity:activity-ktx:1.8.2"
-    implementation "androidx.exifinterface:exifinterface:1.3.5" // JitPack safe
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.appcompat:appcompat-resources:1.6.1"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+    implementation "androidx.activity:activity-ktx:$androidXActivity"
 
-    testImplementation "junit:junit:4.13.2"
-    testImplementation "androidx.test.ext:junit:1.1.6"
-    testImplementation "androidx.test:core:1.5.0"
-    testImplementation "androidx.fragment:fragment-testing:1.6.1"
-    testImplementation "io.mockk:mockk:1.13.7"
-    testImplementation "org.robolectric:robolectric:4.10"
+    implementation "androidx.exifinterface:exifinterface:$androidXExifVersion"
+    implementation "androidx.core:core-ktx:$androidXCoreKtxVersion"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "androidx.test.ext:junit:$androidXJunitVersion"
+    testImplementation "androidx.test:core:$androidXTestVersion"
+    testImplementation "androidx.test:runner:$androidXTestVersion"
+    testImplementation "io.mockk:mockk:$mockkVersion"
+
+    testImplementation "androidx.fragment:fragment-testing:$androidXFragmentTestingVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
 }
