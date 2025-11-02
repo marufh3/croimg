@@ -11,9 +11,9 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.marufh3'  // নিজের GitHub username
-                artifactId = 'croimg'             // নিজের repo নাম
-                version = '5.3.3'                     // নতুন tag version
+                groupId = 'com.github.marufh3'
+                artifactId = 'croimg'
+                version = '5.3.4'
             }
         }
     }
@@ -49,20 +49,23 @@ android {
     testOptions {
         unitTests.includeAndroidResources = true
     }
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
 }
 
 dependencies {
-    // AndroidX dependencies
     implementation "androidx.appcompat:appcompat:1.7.0"
     implementation "androidx.core:core-ktx:1.12.0"
     implementation "androidx.activity:activity-ktx:1.8.2"
-    implementation "androidx.exifinterface:exifinterface:1.3.9"
+    implementation "androidx.exifinterface:exifinterface:1.3.5" // JitPack safe
 
-    // Kotlin Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
-    // Test dependencies
     testImplementation "junit:junit:4.13.2"
     testImplementation "androidx.test.ext:junit:1.1.6"
     testImplementation "androidx.test:core:1.5.0"
