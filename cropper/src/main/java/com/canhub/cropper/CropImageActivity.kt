@@ -51,6 +51,9 @@ open class CropImageActivity :
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
+	WindowCompat.setDecorFitsSystemWindows(window, false)
+    window.statusBarColor = Color.TRANSPARENT
+    window.navigationBarColor = Color.TRANSPARENT
         super.onCreate(savedInstanceState)
 
         binding = CropImageActivityBinding.inflate(layoutInflater)
