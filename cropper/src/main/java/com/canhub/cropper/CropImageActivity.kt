@@ -24,7 +24,8 @@ import com.canhub.cropper.utils.getUriForFile
 import java.io.File
 import androidx.core.view.WindowCompat
 import android.graphics.Color
-
+import android.os.Build
+import android.view.Window
 
 open class CropImageActivity :
     AppCompatActivity(),
@@ -54,9 +55,12 @@ open class CropImageActivity :
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
-	WindowCompat.setDecorFitsSystemWindows(window, false)
-    window.statusBarColor = Color.TRANSPARENT
-    window.navigationBarColor = Color.TRANSPARENT
+    val colorPrimaryDark = Color.parseColor("#000000")
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.statusBarColor = colorPrimaryDark
+    }
+
         super.onCreate(savedInstanceState)
 
         binding = CropImageActivityBinding.inflate(layoutInflater)
