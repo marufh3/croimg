@@ -1,5 +1,5 @@
 buildscript {
-    apply from: 'versions.gradle'
+    //apply from: 'versions.gradle'
 
     repositories {
         maven { url "https://plugins.gradle.org/m2/" }
