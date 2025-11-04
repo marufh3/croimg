@@ -28,6 +28,6 @@ allprojects {
 
 // ✅ Define compile & target SDK versions here
 ext {
-    compileSdkVersion = 33
-    targetSdkVersion = 33
+    compileSdkVersion = 35
+    targetSdkVersion = 35
 }
