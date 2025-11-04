@@ -49,6 +49,12 @@ object CropImage {
    */
   const val CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE = 204
 
+  const val CROP_IMAGE_ACTIVITY_REQUEST_CODE = 203
+
+  /**
+   * The result code used to return error from [CropImageActivity].
+   */
+
   /**
    * Create a new bitmap that has all pixels beyond the oval shape transparent. Old bitmap is
    * recycled.

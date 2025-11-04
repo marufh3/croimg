@@ -11,7 +11,6 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.net.Uri
 import android.os.Build.VERSION.SDK_INT
-import android.os.Environment
 import android.util.Log
 import android.util.Pair
 import androidx.exifinterface.media.ExifInterface
@@ -218,7 +217,7 @@ internal object BitmapUtils {
     scale: Float,
     flipHorizontally: Boolean,
     flipVertically: Boolean,
-  ): Bitmap? {
+  ): Bitmap {
     // get the rectangle in original image that contains the required cropped area (larger for non-
     // rectangular crop)
     val rect = getRectFromPoints(
@@ -246,8 +245,7 @@ internal object BitmapUtils {
       true,
     )
     if (result == bitmap) {
-      // corner case when all bitmap is selected, no worth optimizing for it
-      result = bitmap.copy(bitmap.config, false)
+      result = bitmap.copy(bitmap.config ?: Bitmap.Config.ARGB_8888, false)
     }
     // rotating by 0, 90, 180 or 270 degrees doesn't require extra cropping
     if (degreesRotated % 90 != 0) {
@@ -457,18 +455,8 @@ internal object BitmapUtils {
       }
       // We have this because of a HUAWEI path bug when we use getUriForFile
       if (SDK_INT >= 29) {
-        try {
-          val file = File.createTempFile(
-            "cropped",
-            ext,
-            context.getExternalFilesDir(Environment.DIRECTORY_PICTURES),
-          )
-          getUriForFile(context, file)
-        } catch (e: Exception) {
-          Log.e("AIC", "${e.message}")
-          val file = File.createTempFile("cropped", ext, context.cacheDir)
-          getUriForFile(context, file)
-        }
+        val file = File.createTempFile("cropped", ext, context.cacheDir)
+        getUriForFile(context, file)
       } else {
         Uri.fromFile(File.createTempFile("cropped", ext, context.cacheDir))
       }
