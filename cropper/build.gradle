@@ -5,12 +5,11 @@ apply plugin: 'maven-publish'
 
 group = 'com.github.marufh3' // নিজের GitHub username
 
-afterEvaluate {
+afterEvaluate 
     publishing {
         publications {
             release(MavenPublication) {
-                from components.release
-
+                from components["release"]  // quotes দিয়ে চেষ্টা করো
                 groupId = 'com.github.marufh3'
                 artifactId = 'croimg'
                 version = '5.3.8'
@@ -19,7 +18,10 @@ afterEvaluate {
     }
 }
 
+
 android {
+
+  namespace = "com.canhub.cropper"
     compileSdk 35
 
     defaultConfig {
